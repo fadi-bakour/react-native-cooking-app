@@ -10,6 +10,8 @@ import {
 import { Input } from 'react-native-elements';
 import { Login } from '../../actions/AuthActions';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import apis from '../../apis/apis';
 
 // Map State To Props (Redux Store Passes State To Component)
 const mapStateToProps = (state) => {
@@ -19,15 +21,18 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    reduxLogin: () => dispatch(Login()),
-  }
-}
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      reduxLogin: (email, password) =>
+        apis.loginAuth(email, password),
+    },
+    dispatch,
+  );
 
 const SignInScreen = ({ navigation, reduxLogin }) => {
-  const [Email, setEmail] = useState('')
-  const [Password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   return (
     <View style={styles.container}>
       <ImageBackground source={require('../../assets/bg.jpg')} style={styles.image}>
@@ -63,7 +68,7 @@ const SignInScreen = ({ navigation, reduxLogin }) => {
             Forgot Password?
         </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnDiv}  onPress={() => reduxLogin()}>
+        <TouchableOpacity style={styles.btnDiv}  onPress={() => reduxLogin({ email, password })}>
           <Text style={styles.btn}>Log in</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.SignUpDiv} onPress={() => navigation.navigate('SignUpScreen')}>
