@@ -6,9 +6,6 @@ import {
   View,
   TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList
 } from 'react-native';
-import { connect } from 'react-redux';
-import { LogOut } from '../actions/AuthActions';
-import { useNavigation } from '@react-navigation/native';
 
 const renderItem = ({ item }) => {
 

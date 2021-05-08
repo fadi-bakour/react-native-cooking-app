@@ -5,29 +5,9 @@ import {
   View,
   TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList, useWindowDimensions
 } from 'react-native';
-import { connect } from 'react-redux';
 import { LogOut } from '../../actions/AuthActions';
-import RenderItem from './RenderItem';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import axios from 'react-native-axios';
-
-
-
-
-const mapStateToProps = (state) => {
-  // Redux Store --> Component
-  return {
-    Token: state.Token,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    LogOut: dispatch(LogOut())
-  }
-}
-
-
 
 const FirstRoute = ({ data, ing }) => {
   console.log(ing);
@@ -182,5 +162,5 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShowRecipeScreen);
+export default ShowRecipeScreen;
 

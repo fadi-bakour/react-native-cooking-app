@@ -11,25 +11,16 @@ import ForgotPasswordScreen from '../screens/authentcation/ForgotPasswordScreen'
 import BotNav from './BotNav';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 
-
-
 import { connect } from 'react-redux';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const mapStateToProps = (state) => {
-    // Redux Store --> Component
-    return {
-        // Token: state.Token,
-    };
-};
-
-const Routes = ({ Token }) => {
-    console.log(Token);
+const Routes = (Token) => {
     return (
         <NavigationContainer>
-            {Token == null ?
+            {Token.Token == null ?
                 (
                     <Stack.Navigator headerMode="none">
                         <Stack.Screen name="SignInScreen" component={SignInScreen} />
@@ -48,8 +39,13 @@ const Routes = ({ Token }) => {
         </NavigationContainer >
     );
 };
-
-
-
+ 
+// Map State To Props (Redux Store Passes State To Component)
+const mapStateToProps = (state) => {
+    // Redux Store --> Component
+    return {
+      Token: state.authReducer.Token,
+    };
+  };
 
 export default connect(mapStateToProps)(Routes);

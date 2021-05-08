@@ -5,26 +5,10 @@ import {
   View,
   TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList
 } from 'react-native';
-import { connect } from 'react-redux';
 import { LogOut } from '../../actions/AuthActions';
-import { useNavigation } from '@react-navigation/native';
 import RenderItem from './RenderItem';
 
 import axios from 'react-native-axios';
-
-const mapStateToProps = (state) => {
-  // Redux Store --> Component
-  return {
-    Token: state.Token,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    LogOut: dispatch(LogOut())
-  }
-}
-
 
 const Catagories = ({ navigation }) => {
 
@@ -102,5 +86,5 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Catagories);
+export default Catagories;
 

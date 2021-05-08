@@ -1,7 +1,7 @@
 export const Login = () => (
     {
       type: 'LOGIN',
-      Token: 'Token',
+      Token: 'test',
     }
   );
 

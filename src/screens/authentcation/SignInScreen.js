@@ -10,20 +10,22 @@ import {
 import { Input } from 'react-native-elements';
 import { Login } from '../../actions/AuthActions';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
+// Map State To Props (Redux Store Passes State To Component)
 const mapStateToProps = (state) => {
   // Redux Store --> Component
   return {
-    Token: state.Token,
+    Token: state.authReducer.Token,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    reduxLogin: dispatch(Login())
+    reduxLogin: () => dispatch(Login()),
   }
 }
+
+
 
 const SignInScreen = ({ navigation, reduxLogin }) => {
   const [Email, setEmail] = useState('')
@@ -63,7 +65,7 @@ const SignInScreen = ({ navigation, reduxLogin }) => {
             Forgot Password?
         </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnDiv} onPress={() => reduxLogin}>
+        <TouchableOpacity style={styles.btnDiv}  onPress={() => reduxLogin()}>
           <Text style={styles.btn}>Log in</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.SignUpDiv} onPress={() => navigation.navigate('SignUpScreen')}>

@@ -5,24 +5,24 @@ import {
   View,
   TouchableOpacity, Image, ScrollView, StatusBar, TextInput
 } from 'react-native';
-import { connect } from 'react-redux';
 import { LogOut } from '../../actions/AuthActions';
+import { connect } from 'react-redux';
 
+// Map State To Props (Redux Store Passes State To Component)
 const mapStateToProps = (state) => {
   // Redux Store --> Component
   return {
-    Token: state.Token,
+    Token: state.authReducer.Token,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    LogOut: dispatch(LogOut())
+    reduxLogOut: () => dispatch(LogOut()),
   }
 }
 
-
-const ProfileScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation,reduxLogOut }) => {
 
   return (
     <View style={styles.container}>
@@ -51,9 +51,9 @@ const ProfileScreen = ({ navigation }) => {
             secureTextEntry
           />
         </View>
-        <TouchableOpacity style={styles.btnDiv}>
+        <TouchableOpacity style={styles.btnDiv} onPress={() => reduxLogOut()}>
           <Text style={styles.btn}>
-            Save
+            Log Out
             </Text>
         </TouchableOpacity>
       </View>
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
   inputContainer: { margin: '2%', padding: '3%' },
   input: { borderWidth: 1, borderColor: 'black', marginTop: 7, height: 40, borderRadius: 5, paddingLeft: 8 }
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
 
