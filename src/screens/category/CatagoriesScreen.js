@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,20 +8,25 @@ import {
 import RenderItem from './RenderItem';
 
 import ApiService from '../../services/ApiService'
+
+import SplashScreen from 'react-native-splash-screen'
+
+
 const Catagories = ({ navigation }) => {
 
   const [item, setItems] = useState([])
 
   useEffect(() => {
-    ApiService('/categories.php','get').then(function (response) {
+    ApiService('/categories.php', 'get').then(function (response) {
       setItems(response.categories);
+      SplashScreen.hide();
     })
-    .catch(function (error) {
-      console.log(error);
-    });
-  
+      .catch(function (error) {
+        console.log(error);
+      });
+
   }, []);
-  
+
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor='#1d2126' />
@@ -38,7 +43,7 @@ const Catagories = ({ navigation }) => {
           data={item}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('Recipes',{itemId: item.strCategory})}>
+              <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('Recipes', { itemId: item.strCategory })}>
                 <RenderItem item={item} />
               </TouchableOpacity>
             )
@@ -72,7 +77,7 @@ const styles = StyleSheet.create({
   topViewContainer: { flex: 0.25, backgroundColor: '#1d2126' },
   topViewText: { color: 'white', padding: '5%', fontSize: 35, maxWidth: '50%' },
   categorysContainer: { flex: 0.75, backgroundColor: '#f7f7f7' },
-  categoryItem: { flex:1, height: 200 },
+  categoryItem: { flex: 1, height: 200 },
 });
 
 
