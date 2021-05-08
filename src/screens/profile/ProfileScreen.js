@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity, Image, ScrollView, StatusBar, TextInput
+  TouchableOpacity, Image, StatusBar, TextInput
 } from 'react-native';
 import { LogOut } from '../../actions/AuthActions';
 import { connect } from 'react-redux';
@@ -79,12 +79,7 @@ const styles = StyleSheet.create({
   btnDiv: { width: '50%', alignItems: 'center', backgroundColor: '#ff9f1c', alignSelf: 'center', height: 50, justifyContent: 'center', borderRadius: 5, margin: '2%', },
   btn: { color: 'white', fontSize: 18, fontWeight: '700' },
   topViewContainer: { flex: 0.35, backgroundColor: '#1d2126', justifyContent: 'center' },
-  topViewText: { color: 'white', padding: '5%', fontSize: 35, maxWidth: '50%' },
   categorysContainer: { flex: 0.75, backgroundColor: '#f7f7f7' },
-  categoryItem: { maxWidth: '50%', height: 200 },
-  categoryItemInside: { backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', margin: '5%', borderWidth: 1, flex: 1, borderRadius: 5 },
-  categoryItemTitle: { color: 'black', fontSize: 15 },
-  categoryItemInfo: { color: 'black', fontSize: 10, textAlign: 'center', padding: 5 },
   label: { fontSize: 20 },
   inputContainer: { margin: '2%', padding: '3%' },
   input: { borderWidth: 1, borderColor: 'black', marginTop: 7, height: 40, borderRadius: 5, paddingLeft: 8 }

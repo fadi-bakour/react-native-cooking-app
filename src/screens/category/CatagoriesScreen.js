@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList
+  TouchableOpacity, ImageBackground, StatusBar, FlatList
 } from 'react-native';
 import RenderItem from './RenderItem';
 
@@ -22,8 +22,6 @@ const Catagories = ({ navigation }) => {
   
   }, []);
   
-
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor='#1d2126' />
@@ -71,15 +69,10 @@ const styles = StyleSheet.create({
     maxHeight: '50%',
     margin: '5%'
   },
-  btnDiv: { width: '50%', alignItems: 'center', backgroundColor: '#ff9f1c', alignSelf: 'center', height: 50, justifyContent: 'center', borderRadius: 5, margin: '2%', },
-  btn: { color: 'white', fontSize: 18, fontWeight: '700' },
   topViewContainer: { flex: 0.25, backgroundColor: '#1d2126' },
   topViewText: { color: 'white', padding: '5%', fontSize: 35, maxWidth: '50%' },
   categorysContainer: { flex: 0.75, backgroundColor: '#f7f7f7' },
   categoryItem: { flex:1, height: 200 },
-  categoryItemInside: { backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', margin: '5%', borderWidth: 1, flex: 1, borderRadius: 5 },
-  categoryItemTitle: { color: 'black', fontSize: 15 },
-  categoryItemInfo: { color: 'black', fontSize: 10, textAlign: 'center', padding: 5 },
 });
 
 

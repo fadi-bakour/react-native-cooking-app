@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList, useWindowDimensions
+    FlatList
   } from 'react-native';
  
  const FirstRoute = ({ data, ing }) => {

@@ -67,12 +67,6 @@ const SignUpScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  Color1: {
-    color: '#ff9f1c',
-  },
-  Color2: {
-    color: '#1d2126'
-  },
   container: {
     backgroundColor: '#1d2126',
     flex: 1,
@@ -91,11 +85,6 @@ const styles = StyleSheet.create({
   },
   Title: { color: 'white', alignSelf: 'center', fontSize: 20, marginTop: '10%' },
   SubTitle: { color: 'white', alignSelf: 'center', fontSize: 15 },
-  ForgotPasswordDiv: { alignSelf: 'flex-start', marginTop: '5%' },
-  ForgotPassword: {
-    color: 'white',
-    marginLeft: '5%',
-  },
   input: { backgroundColor: 'white', height: 50, width: '90%', alignSelf: 'center', marginTop: '5%', borderRadius: 5 },
   btnDiv: { width: '90%', alignItems: 'center', backgroundColor: '#ff9f1c', alignSelf: 'center', height: 50, justifyContent: 'center', marginTop: '10%', borderRadius: 5 },
   btn: { color: 'white', fontSize: 18 },

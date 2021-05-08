@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList, useWindowDimensions
+  View, Image, StatusBar, useWindowDimensions
 } from 'react-native';
-import { LogOut } from '../../actions/AuthActions';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import ApiService from '../../services/ApiService';
 import FirstRoute from './FirstRoute';
@@ -15,7 +13,6 @@ const ShowRecipeScreen = ({ route }) => {
 
   const [item, setItems] = useState([]);
   const [ing, setIng] = useState([]);
-  const [val, setVal] = useState([]);
 
   var ingredients = [];
 
@@ -28,10 +25,8 @@ const ShowRecipeScreen = ({ route }) => {
     { key: 'second', title: 'Step By Step' },
   ]);
 
-
-
   useEffect(() => {
-    ApiService('/search.php?s=' + itemId,'get').then(function (response) {
+    ApiService('/search.php?s=' + itemId, 'get').then(function (response) {
       for (let i = 1; i < 21; i++) {
         let meals = response.meals[0];
         let mealIng = meals['strIngredient' + i];
@@ -47,11 +42,11 @@ const ShowRecipeScreen = ({ route }) => {
       setIng(ingredients);
       // setVal(ingredientsVal);
       setItems(response.meals[0]);
-      
+
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .catch(function (error) {
+        console.log(error);
+      });
 
   }, []);
 
@@ -114,23 +109,15 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignSelf: 'flex-end',
-    width:150,
-    height:'60%',
-    resizeMode:'contain',
+    width: 150,
+    height: '60%',
+    resizeMode: 'contain',
     borderRadius: 200,
   },
-  btnDiv: { alignItems: 'center', backgroundColor: '#ff9f1c', alignSelf: 'center', height: 50, justifyContent: 'center', borderRadius: 5, margin: '2%', flex: 0.5 },
-  btnDiv2: { alignItems: 'center', backgroundColor: '#1d2126', alignSelf: 'center', height: 50, justifyContent: 'center', borderRadius: 5, margin: '2%', flex: 0.5 },
-  btn: { color: 'white', fontSize: 18, fontWeight: '700' },
-  topViewContainerInner: {  },
-  topViewText: { color: 'white', fontSize: 35, maxWidth: '50%' },
   categorysContainer: { flex: 0.7, backgroundColor: '#f7f7f7' },
-  categoryItem: { width: '100%', height: 150 },
-  categoryItemInside: { backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', margin: '5%', flex: 1 },
   categoryItemTitle: { color: 'white', fontSize: 25 },
   categoryItemInfo: { color: 'white', fontSize: 15 },
-  RecipeImageContainer: { flex: 0.3, backgroundColor: '#1d2126',padding: '5%' },
-  ingredientsItem: { fontSize: 15, margin: '2%' }
+  RecipeImageContainer: { flex: 0.3, backgroundColor: '#1d2126', padding: '5%' },
 });
 
 

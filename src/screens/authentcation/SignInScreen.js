@@ -25,8 +25,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-
-
 const SignInScreen = ({ navigation, reduxLogin }) => {
   const [Email, setEmail] = useState('')
   const [Password, setPassword] = useState('')
@@ -61,7 +59,7 @@ const SignInScreen = ({ navigation, reduxLogin }) => {
           />
         </View>
         <TouchableOpacity style={styles.ForgotPasswordDiv}>
-          <Text style={styles.ForgotPassword} >
+          <Text style={styles.ForgotPassword} onPress={() => navigation.navigate('ForgotPasswordScreen')}>
             Forgot Password?
         </Text>
         </TouchableOpacity>
@@ -79,12 +77,6 @@ const SignInScreen = ({ navigation, reduxLogin }) => {
 };
 
 const styles = StyleSheet.create({
-  Color1: {
-    color: '#ff9f1c',
-  },
-  Color2: {
-    color: '#1d2126'
-  },
   container: {
     backgroundColor: '#1d2126',
     flex: 1,
