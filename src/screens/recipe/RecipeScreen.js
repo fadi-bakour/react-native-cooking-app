@@ -7,36 +7,9 @@ import {
 } from 'react-native';
 import { LogOut } from '../../actions/AuthActions';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import axios from 'react-native-axios';
-
-const FirstRoute = ({ data, ing }) => {
-  console.log(ing);
-  return (
-    <FlatList
-      nestedScrollEnabled
-      data={ing}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) => {
-        return (
-          <View>
-            <Text>{item.ingrediant} : {item.value}</Text>
-          </View>
-        )
-      }
-      }
-    />
-  )
-}
-
-const SecondRoute = ({ data }) => {
-  return (
-    <ScrollView style={{ marginTop: '2%' }}>
-      <Text style={styles.ingredientsItem}>
-        {data.strInstructions}
-      </Text>
-    </ScrollView>
-  )
-};
+import ApiService from '../../services/ApiService';
+import FirstRoute from './FirstRoute';
+import SecondRoute from './SecondRoute';
 
 const ShowRecipeScreen = ({ route }) => {
 
@@ -45,7 +18,6 @@ const ShowRecipeScreen = ({ route }) => {
   const [val, setVal] = useState([]);
 
   var ingredients = [];
-  var ingredientsVal = [];
 
   const { itemId } = route.params;
   const layout = useWindowDimensions();
@@ -59,27 +31,27 @@ const ShowRecipeScreen = ({ route }) => {
 
 
   useEffect(() => {
-    axios.get('https://www.themealdb.com/api/json/v1/1/search.php?s=' + itemId)
-      .then(function (response) {
-        for (let i = 1; i < 21; i++) {
-          let meals = response.data.meals[0];
-          let mealIng = meals['strIngredient' + i];
-          let mealVal = meals['strMeasure' + i];
-          if (mealIng != '') {
-            var obg = { 'id': i, 'ingrediant': mealIng, 'value': mealVal }
-            ingredients.push(obg);
-            // ingredientsVal.push(mealVal);
-          } else {
-            break;
-          }
+    ApiService('/search.php?s=' + itemId,'get').then(function (response) {
+      for (let i = 1; i < 21; i++) {
+        let meals = response.meals[0];
+        let mealIng = meals['strIngredient' + i];
+        let mealVal = meals['strMeasure' + i];
+        if (mealIng != '') {
+          var obg = { 'id': i, 'ingrediant': mealIng, 'value': mealVal }
+          ingredients.push(obg);
+          // ingredientsVal.push(mealVal);
+        } else {
+          break;
         }
-        setIng(ingredients);
-        // setVal(ingredientsVal);
-        setItems(response.data.meals[0]);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      }
+      setIng(ingredients);
+      // setVal(ingredientsVal);
+      setItems(response.meals[0]);
+      
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
   }, []);
 

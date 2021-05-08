@@ -5,19 +5,16 @@ import {
   View,
   TouchableOpacity, ImageBackground, Image, ScrollView, StatusBar, FlatList
 } from 'react-native';
-import { LogOut } from '../../actions/AuthActions';
 import RenderItem from './RenderItem';
 
-import axios from 'react-native-axios';
-
+import ApiService from '../../services/ApiService'
 const Catagories = ({ navigation }) => {
 
   const [item, setItems] = useState([])
 
   useEffect(() => {
-    axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')
-    .then(function (response) {
-      setItems(response.data.categories);
+    ApiService('/categories.php','get').then(function (response) {
+      setItems(response.categories);
     })
     .catch(function (error) {
       console.log(error);
@@ -43,7 +40,7 @@ const Catagories = ({ navigation }) => {
           data={item}
           renderItem={({ item }) => {
             return (
-              <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('IndexRecipeScreen',{itemId: item.strCategory})}>
+              <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('Recipes',{itemId: item.strCategory})}>
                 <RenderItem item={item} />
               </TouchableOpacity>
             )
