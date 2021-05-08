@@ -7,7 +7,6 @@ import {
   } from 'react-native';
  
  const FirstRoute = ({ data, ing }) => {
-    console.log(ing);
     return (
       <FlatList
         nestedScrollEnabled
