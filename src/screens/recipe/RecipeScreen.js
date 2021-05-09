@@ -65,13 +65,13 @@ const ShowRecipeScreen = ({ route }) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor='#1d2126' />
       <View style={styles.RecipeImageContainer}>
+        <Image
+          style={styles.logo}
+          source={{ uri: item.strMealThumb }} />
         <View style={styles.topViewContainerInner}>
           <Text style={styles.categoryItemTitle}>{item.strMeal} </Text>
           <Text style={styles.categoryItemInfo}>{item.strArea}</Text>
         </View>
-        <Image
-          style={styles.logo}
-          source={{ uri: item.strMealThumb }} />
       </View>
 
       <View style={styles.categorysContainer}>
@@ -85,12 +85,16 @@ const ShowRecipeScreen = ({ route }) => {
                 </Text>
               )}
               style={{ backgroundColor: 'white' }}
+              indicatorStyle={{ backgroundColor: 'blue', height: 2, elevation: 0 }}
+
+
             />
           )}
           navigationState={{ index, routes }}
           renderScene={renderScene}
           onIndexChange={setIndex}
           initialLayout={{ width: layout.width }}
+
         />
       </View>
     </View>
@@ -108,16 +112,16 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   logo: {
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     width: 150,
-    height: '60%',
+    height: '70%',
     resizeMode: 'contain',
     borderRadius: 200,
   },
-  categorysContainer: { flex: 0.7, backgroundColor: '#f7f7f7' },
-  categoryItemTitle: { color: 'white', fontSize: 25 },
-  categoryItemInfo: { color: 'white', fontSize: 15 },
-  RecipeImageContainer: { flex: 0.3, backgroundColor: '#1d2126', padding: '5%' },
+  categorysContainer: { flex: 0.6 },
+  categoryItemTitle: { color: 'black', fontSize: 25,textAlign:'center' },
+  categoryItemInfo: { color: 'black', fontSize: 20,textAlign:'center' },
+  RecipeImageContainer: { flex: 0.4, padding: '5%', backgroundColor: 'white' },
 });
 
 

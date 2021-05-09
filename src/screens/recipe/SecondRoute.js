@@ -6,7 +6,7 @@ import {
 
 const SecondRoute = ({ data }) => {
   return (
-    <ScrollView style={{ marginTop: '2%' }}>
+    <ScrollView style={{ margin: '5%' }}>
       <Text style={styles.ingredientsItem}>
         {data.strInstructions}
       </Text>
@@ -16,7 +16,7 @@ const SecondRoute = ({ data }) => {
 
 
 const styles = StyleSheet.create({
-  ingredientsItem: { fontSize: 15, margin: '2%' }
+  ingredientsItem: {fontSize:18,lineHeight:25} 
 });
 
 export default SecondRoute;

@@ -3,7 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity, ImageBackground, StatusBar, FlatList
+  TouchableOpacity, ImageBackground, StatusBar, FlatList, Image
 } from 'react-native';
 import { LogOut } from '../../actions/AuthActions';
 import RenderItem from './RenderItem';
@@ -27,31 +27,31 @@ const IndexRecipeScreen = ({ route, navigation }) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor='#1d2126' />
       <View style={styles.topViewContainer}>
-        <ImageBackground source={require('../../assets/bg.jpg')} style={styles.image}>
           <Text style={styles.topViewText}>
             We get bigger with your support
         </Text>
-        </ImageBackground>
       </View>
       <View style={styles.categorysContainer}>
         {loader ? (
-          <Text>loader</Text>
+          <Image
+            style={{alignSelf:'center' }}
+            source={ require('../../assets/loader.gif') }
+          />
         ) : (
-            <FlatList
-              nestedScrollEnabled
-              data={item}
-              numColumns={3}
-              keyExtractor={item => item.idMeal}
-              renderItem={({ item }) => {
-                return (
-                  <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('Recipe', { itemId: item.strMeal })}>
-                    <RenderItem item={item} />
-                  </TouchableOpacity>
-                )
-              }
-              }
-            />
-          )}
+          <FlatList
+            nestedScrollEnabled
+            data={item}
+            keyExtractor={item => item.idMeal}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity style={styles.categoryItem} onPress={() => navigation.navigate('Recipe', { itemId: item.strMeal })}>
+                  <RenderItem item={item} />
+                </TouchableOpacity>
+              )
+            }
+            }
+          />
+        )}
       </View>
     </View>
 
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
   },
-  topViewContainer: { flex: 0.25, backgroundColor: '#1d2126' },
-  topViewText: { color: 'white', padding: '5%', fontSize: 35, maxWidth: '50%' },
-  categorysContainer: { flex: 0.75, backgroundColor: '#f7f7f7' },
+  topViewContainer: { flex: 0.2, backgroundColor: '#1d2126',justifyContent:'center' },
+  topViewText: { color: 'white', fontSize: 35,textAlign:'center' },
+  categorysContainer: { flex: 0.8,justifyContent:'center' },
   categoryItem: { flex: 1, height: 150 },
 });
 

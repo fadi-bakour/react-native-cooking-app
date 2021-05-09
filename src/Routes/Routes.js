@@ -10,6 +10,7 @@ import ForgotPasswordScreen from '../screens/authentcation/ForgotPasswordScreen'
 
 import BotNav from './BotNav';
 import ProfileScreen from '../screens/profile/ProfileScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 import { connect } from 'react-redux';
 
@@ -40,10 +41,10 @@ const Routes = (Token) => {
                                     iconName = focused
                                         ? 'ios-information-circle'
                                         : 'ios-information-circle-outline';
-                                    if (focused) { return <FontAwesome5 name={'puzzle-piece'} size={23} color={'tomato'} />; } else { return <FontAwesome5 name={'puzzle-piece'} size={23} />; }
+                                    if (focused) { return <FontAwesome5 name={'puzzle-piece'} size={23} color={'black'} />; } else { return <FontAwesome5 name={'puzzle-piece'} size={23} color={'silver'} />; }
                                 } else if (route.name === 'Profile') {
                                     iconName = focused ? 'ios-list-box' : 'ios-list';
-                                    if (focused) { return <FontAwesome5 name={'user'} size={23} color={'tomato'} />; } else { return <FontAwesome5 name={'user'} size={23} />; }
+                                    if (focused) { return <FontAwesome5 name={'user'} size={23} color={'black'} />; } else { return <FontAwesome5 name={'user'} size={23} color={'silver'} />; }
 
                                 }
 
@@ -51,8 +52,8 @@ const Routes = (Token) => {
                             },
                         })}
                         tabBarOptions={{
-                            activeTintColor: 'tomato',
-                            inactiveTintColor: 'gray',
+                            activeTintColor: 'black',
+                            inactiveTintColor: 'silver',
                             style: { height: 60 },
                             labelStyle: { fontSize: 12,marginTop:'-3%',marginBottom:'3%' },
                         }}

@@ -22,39 +22,22 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const ProfileScreen = ({ navigation,reduxLogOut }) => {
+const ProfileScreen = ({ navigation, reduxLogOut }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor='#1d2126' />
-      <View style={styles.topViewContainer}>
-        <Image source={require('../../assets/logo.png')} style={styles.logo} />
+      <StatusBar barStyle="dark-content" backgroundColor='white' />
+      <View style={{ flex: 0.88 }}>
+        <Image
+          style={styles.logo}
+          source={require('../../assets/profile.jpg')}
+        />
       </View>
-      <View style={styles.categorysContainer}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Email</Text>
-          <TextInput style={styles.input}
-            value='Fadi.Bakout101@gmail.com'
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Password</Text>
-          <TextInput style={styles.input}
-            value='Fadi.Bakout101@gmail.com'
-            secureTextEntry
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Confirm Password</Text>
-          <TextInput style={styles.input}
-            value='Fadi.Bakout101@gmail.com'
-            secureTextEntry
-          />
-        </View>
+      <View style={{ flex: 0.12 }}>
         <TouchableOpacity style={styles.btnDiv} onPress={() => reduxLogOut()}>
           <Text style={styles.btn}>
             Log Out
-            </Text>
+        </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -72,7 +55,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   logo: {
-    height: "50%",
+    height: "100%",
     resizeMode: 'contain',
     alignSelf: 'center',
   },
