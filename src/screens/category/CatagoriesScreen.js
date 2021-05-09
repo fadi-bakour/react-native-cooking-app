@@ -31,11 +31,8 @@ const Catagories = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor='#1d2126' />
       <View style={styles.topViewContainer}>
-        <ImageBackground source={require('../../assets/bg.jpg')} style={styles.image}>
-          <Text style={styles.topViewText}>
-            We get bigger with your support
-        </Text>
-        </ImageBackground>
+        <Text style={styles.headerTitle}>What would you like to eat?</Text>
+        <Text style={styles.headerDec}>Choose one of our Catagories to start your cooking journey with us</Text>
       </View>
       <View style={styles.categorysContainer}>
         <FlatList
@@ -67,17 +64,11 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
   },
-  logo: {
-    height: "50%",
-    resizeMode: 'contain',
-    alignSelf: 'center',
-    maxHeight: '50%',
-    margin: '5%'
-  },
-  topViewContainer: { flex: 0.25, backgroundColor: '#1d2126' },
-  topViewText: { color: 'white', padding: '5%', fontSize: 35, maxWidth: '50%' },
-  categorysContainer: { flex: 0.75, backgroundColor: '#f7f7f7' },
+  topViewContainer: { flex: 0.2 },
+  categorysContainer: { flex: 0.8 },
   categoryItem: { flex: 1, height: 200 },
+  headerTitle: { fontSize: 25, marginTop: '5%', alignSelf: 'center' },
+  headerDec: { fontSize: 15, alignSelf: 'center', marginTop: '3%', textAlign: 'center' }
 });
 
 

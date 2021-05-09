@@ -8,8 +8,10 @@ import {
 } from 'react-native';
 
 const renderItem = ({ item }) => {
+  let theColor ='rgb('+(Math.floor(Math.random()*56)+200)+','+Math.round(Math.random()*255)+','+Math.round(Math.random()*255)+')';
+
   return (
-    <View style={styles.categoryItemInside}>
+    <View style={[styles.categoryItemInside, {backgroundColor: theColor}]}>
       <Image
         style={styles.logo}
         source={{ uri: item.strCategoryThumb }}
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
     margin: '5%'
   },
   categoryItem: { maxWidth: '50%', height: 200 },
-  categoryItemInside: { backgroundColor: 'white', justifyContent: 'center', alignItems: 'center', margin: '5%', borderWidth: 1, flex: 1, borderRadius: 5 },
+  categoryItemInside: {justifyContent: 'center', alignItems: 'center', margin: '5%', borderWidth: 1, flex: 1, borderRadius: 10 },
   categoryItemTitle: { color: 'black', fontSize: 15 },
 });
 
