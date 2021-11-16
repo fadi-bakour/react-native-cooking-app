@@ -1,1 +1,1 @@
-# ChickenWing
+# react-native-cooking-app
